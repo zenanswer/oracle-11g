@@ -52,7 +52,6 @@ create_db() {
 	date "+%F %T"
 	change_dpdump_dir
         touch $pfile
-        /tas-init/init_db.sh
 	trap_db
         kill $MON_ALERT_PID
 	#wait $MON_ALERT_PID
