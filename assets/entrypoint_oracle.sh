@@ -4,7 +4,7 @@ set -e
 source /assets/colorecho
 source ~/.bashrc
 
-alert_log="$ORACLE_BASE/diag/rdbms/orcl/$ORACLE_SID/trace/alert_$ORACLE_SID.log"
+alert_log="$ORACLE_BASE/diag/rdbms/tctas/$ORACLE_SID/trace/alert_$ORACLE_SID.log"
 listener_log="$ORACLE_BASE/diag/tnslsnr/$HOSTNAME/listener/trace/listener.log"
 pfile=$ORACLE_HOME/dbs/init$ORACLE_SID.ora
 
@@ -52,6 +52,7 @@ create_db() {
 	date "+%F %T"
 	change_dpdump_dir
         touch $pfile
+        /tas-init/init_db.sh
 	trap_db
         kill $MON_ALERT_PID
 	#wait $MON_ALERT_PID
